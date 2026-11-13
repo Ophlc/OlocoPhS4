@@ -10,7 +10,7 @@ Aplicativo para Windows que envia arquivos `.pkg` armazenados no computador para
 
 ## Autoria
 
-O OlocoPhS4 Installer foi desenvolvido por **Pedro Henrique**, estudante de **Desenvolvimento de Sistemas (DS)**, com auxílio de ferramentas de Inteligência Artificial durante o desenvolvimento, os testes e a documentação.
+O OlocoPhS4 Installer foi desenvolvido por brasileiro, que no caso sou **eu mesmo**, sou estudante de **Desenvolvimento de Sistemas (DS)**, e com auxílio de ferramentas de Inteligência Artificial durante o desenvolvimento, os testes e a documentação.
 
 O projeto utiliza como base o [DirectPackageInstaller](https://github.com/marcussacana/DirectPackageInstaller), de marcussacana, e mantém os créditos e a licença do projeto original.
 
