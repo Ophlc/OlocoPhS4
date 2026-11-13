@@ -1,0 +1,355 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:DirectPackageInstaller.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="1280" d:DesignHeight="800"
+             x:Class="DirectPackageInstaller.Views.MainView"
+             Foreground="#F8F5FF"
+             Background="#07060A">
+  <Design.DataContext>
+    <viewModels:MainViewModel />
+  </Design.DataContext>
+
+  <Grid Name="MainViewGrid" DragDrop.AllowDrop="True"
+        RowDefinitions="92,*,74" ColumnDefinitions="112,*">
+    <Border Grid.RowSpan="3" Grid.Column="0" BorderBrush="#3D2260" BorderThickness="0,0,1,0">
+      <Border.Background>
+        <LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
+          <GradientStop Color="#24103B" Offset="0" />
+          <GradientStop Color="#10091B" Offset="0.55" />
+          <GradientStop Color="#09070D" Offset="1" />
+        </LinearGradientBrush>
+      </Border.Background>
+      <Grid RowDefinitions="Auto,*,Auto" Margin="0,22">
+        <StackPanel HorizontalAlignment="Center" Spacing="7">
+          <Border Width="70" Height="70" Background="#150D20" BorderBrush="#8B5CF6"
+                  BorderThickness="1" CornerRadius="22" Padding="7">
+            <Image Source="/Assets/olocophs4-installer.png" Stretch="Uniform" />
+          </Border>
+          <TextBlock Text="OPS4" FontSize="11" FontWeight="Bold" LetterSpacing="2"
+                     Foreground="#C4A7FF" HorizontalAlignment="Center" />
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" VerticalAlignment="Center" Spacing="26">
+          <StackPanel HorizontalAlignment="Center" Spacing="7">
+            <Border Classes="step active"><TextBlock Text="1" Classes="stepNumber" /></Border>
+            <TextBlock Text="CONECTAR" Classes="stepLabel active" />
+          </StackPanel>
+          <Border Width="1" Height="18" Background="#45296A" HorizontalAlignment="Center" />
+          <StackPanel HorizontalAlignment="Center" Spacing="7">
+            <Border Classes="step"><TextBlock Text="2" Classes="stepNumber" /></Border>
+            <TextBlock Text="PACOTE" Classes="stepLabel" />
+          </StackPanel>
+          <Border Width="1" Height="18" Background="#45296A" HorizontalAlignment="Center" />
+          <StackPanel HorizontalAlignment="Center" Spacing="7">
+            <Border Classes="step"><TextBlock Text="3" Classes="stepNumber" /></Border>
+            <TextBlock Text="INSTALAR" Classes="stepLabel" />
+          </StackPanel>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" HorizontalAlignment="Center" Spacing="4">
+          <Ellipse Width="7" Height="7" Fill="#22C55E" HorizontalAlignment="Center" />
+          <TextBlock Text="LOCAL" Foreground="#88789A" FontSize="9" FontWeight="Bold"
+                     LetterSpacing="1.4" />
+          <TextBlock Text="v0.2" Foreground="#665875" FontSize="9" HorizontalAlignment="Center" />
+        </StackPanel>
+      </Grid>
+    </Border>
+
+    <Border Grid.Row="0" Grid.Column="1" BorderBrush="#24172F" BorderThickness="0,0,0,1">
+      <Grid Margin="30,0" ColumnDefinitions="*,Auto">
+        <StackPanel VerticalAlignment="Center" Spacing="3">
+          <TextBlock Text="OLOCO PHS4 INSTALLER" Classes="eyebrow" />
+          <TextBlock Text="Seu PKG, direto para o console." FontSize="25" FontWeight="SemiBold" />
+          <TextBlock Text="Selecione no PC, envie pela rede e acompanhe tudo em um só lugar."
+                     Foreground="#9689A5" FontSize="11" />
+        </StackPanel>
+
+        <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" Spacing="12">
+          <Border Background="#102019" BorderBrush="#24543B" BorderThickness="1"
+                  CornerRadius="18" Padding="13,7">
+            <StackPanel Orientation="Horizontal" Spacing="7">
+              <Ellipse Width="7" Height="7" Fill="#35D07F" VerticalAlignment="Center" />
+              <TextBlock Text="GOLDHEN READY" Foreground="#83E6AE" FontSize="10"
+                         FontWeight="Bold" LetterSpacing="0.7" />
+            </StackPanel>
+          </Border>
+          <Menu Background="Transparent">
+            <MenuItem Header="Fila de PKGs" Name="PackagesMenu" IsVisible="False">
+              <Separator />
+              <MenuItem Header="Instalar todos" Name="btnInstallAll" />
+            </MenuItem>
+          </Menu>
+        </StackPanel>
+      </Grid>
+    </Border>
+
+    <Grid Grid.Row="1" Grid.Column="1" Margin="30,22,30,20" ColumnDefinitions="*,20,350">
+      <Grid Grid.Column="0" RowDefinitions="136,16,*">
+        <Border Grid.Row="0" Classes="surface hero">
+          <Grid ColumnDefinitions="*,Auto" Margin="22,18">
+            <StackPanel VerticalAlignment="Center" Spacing="7" Margin="0,0,22,0">
+              <StackPanel Orientation="Horizontal" Spacing="8">
+                <Border Background="#6D28D9" CornerRadius="10" Padding="9,4">
+                  <TextBlock Text="PKG LOCAL" Foreground="White" FontSize="9" FontWeight="Bold"
+                             LetterSpacing="1" />
+                </Border>
+                <TextBlock Text="ETAPA 2" Classes="mutedCaps" VerticalAlignment="Center" />
+              </StackPanel>
+              <TextBlock Text="Escolha o pacote que vai para o PS4" FontSize="18" FontWeight="SemiBold" />
+              <TextBox Name="tbURL" Text="{Binding CurrentURL, Mode=TwoWay}"
+                       Watermark="Arraste um arquivo .pkg para cá ou escolha no computador" />
+            </StackPanel>
+            <Button Grid.Column="1" Name="btnLoad" Classes="action"
+                    Content="Selecionar .PKG" VerticalAlignment="Bottom" MinWidth="172" />
+          </Grid>
+        </Border>
+
+        <Border Grid.Row="2" Classes="surface" Padding="0">
+          <Grid RowDefinitions="58,*">
+            <Grid Margin="20,0" ColumnDefinitions="*,Auto">
+              <StackPanel VerticalAlignment="Center" Spacing="2">
+                <TextBlock Text="VISÃO DO PACOTE" Classes="eyebrow" />
+                <TextBlock Text="Capa e informações detectadas no arquivo" Foreground="#8E829B" FontSize="11" />
+              </StackPanel>
+              <Border Grid.Column="1" Background="#171020" CornerRadius="13" Padding="10,5"
+                      VerticalAlignment="Center">
+                <TextBlock Text="LEITURA LOCAL" Foreground="#AE8BDB" FontSize="9" FontWeight="Bold" />
+              </Border>
+            </Grid>
+
+            <Grid Grid.Row="1" Name="PreviewGrid" Margin="14,0,14,14" ColumnDefinitions="250,1,*">
+              <Image Name="IconBox" Source="/Assets/olocophs4-installer.png" Stretch="Uniform"
+                     Margin="16" />
+              <GridSplitter Grid.Column="1" Name="MainGridSplitter" Background="#332040" Width="1" />
+              <DataGrid Grid.Column="2" Name="PkgInfoGrid" ItemsSource="{Binding PKGParams}" Margin="16,0,0,0">
+                <DataGrid.Columns>
+                  <DataGridTextColumn Header="INFORMAÇÃO" Binding="{Binding Name}" Width="150" />
+                  <DataGridTextColumn Header="DETALHE" Binding="{Binding Value}" Width="*" />
+                </DataGrid.Columns>
+              </DataGrid>
+            </Grid>
+          </Grid>
+        </Border>
+      </Grid>
+
+      <ScrollViewer Grid.Column="2" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+        <StackPanel Spacing="14" Margin="0,0,5,0">
+          <Border Classes="surface connection">
+            <StackPanel Spacing="13" Margin="20">
+              <Grid ColumnDefinitions="*,Auto">
+                <StackPanel Spacing="2">
+                  <TextBlock Text="CONSOLE" Classes="eyebrow" />
+                  <TextBlock Text="Conexão com o PS4" FontSize="19" FontWeight="SemiBold" />
+                </StackPanel>
+                <Border Grid.Column="1" Width="42" Height="42" Background="#2B1743"
+                        BorderBrush="#713EB0" BorderThickness="1" CornerRadius="14">
+                  <TextBlock Text="PS4" FontSize="10" FontWeight="Bold" Foreground="#C69CF8"
+                             HorizontalAlignment="Center" VerticalAlignment="Center" />
+                </Border>
+              </Grid>
+
+              <StackPanel Spacing="5">
+                <TextBlock Text="IP DO CONSOLE" Classes="fieldLabel" />
+                <TextBox Text="{Binding PS4IP, Mode=TwoWay}" Watermark="192.168.1.50" />
+              </StackPanel>
+
+              <StackPanel Spacing="5">
+                <TextBlock Text="IP DESTE COMPUTADOR" Classes="fieldLabel" />
+                <TextBox Text="{Binding PCIP, Mode=TwoWay}" Watermark="Detectado automaticamente" />
+              </StackPanel>
+
+              <Button Name="btnTestConnection" Classes="secondary" HorizontalAlignment="Stretch">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Spacing="8">
+                  <Ellipse Width="8" Height="8" Fill="#A855F7" />
+                  <TextBlock Text="Testar acesso ao PS4" />
+                </StackPanel>
+              </Button>
+
+              <Border Background="#0D0A12" BorderBrush="#2E1F3B" BorderThickness="1"
+                      CornerRadius="12" Padding="12,10">
+                <TextBlock Name="ConnectionStatus" Text="Informe o IP do PS4 para começar"
+                           Foreground="#B8AACA" TextWrapping="Wrap" FontSize="11" LineHeight="17" />
+              </Border>
+            </StackPanel>
+          </Border>
+
+          <Border Classes="surface checklist">
+            <StackPanel Spacing="10" Margin="20,17">
+              <TextBlock Text="ANTES DE INSTALAR" Classes="eyebrow" />
+              <Grid ColumnDefinitions="20,*"><TextBlock Text="01" Classes="checkNumber"/><TextBlock Grid.Column="1" Text="GoldHEN carregado" Classes="checkText"/></Grid>
+              <Grid ColumnDefinitions="20,*"><TextBlock Text="02" Classes="checkNumber"/><TextBlock Grid.Column="1" Text="BinLoader ativado" Classes="checkText"/></Grid>
+              <Grid ColumnDefinitions="20,*"><TextBlock Text="03" Classes="checkNumber"/><TextBlock Grid.Column="1" Text="PC e PS4 na mesma rede" Classes="checkText"/></Grid>
+            </StackPanel>
+          </Border>
+
+          <Border Background="#21112F" BorderBrush="#573177" BorderThickness="1"
+                  CornerRadius="16" Padding="15,12">
+            <Grid ColumnDefinitions="Auto,*">
+              <TextBlock Text="!" FontSize="18" FontWeight="Bold" Foreground="#C084FC"
+                         Margin="0,0,11,0" VerticalAlignment="Center" />
+              <TextBlock Grid.Column="1"
+                         Text="Mantenha o computador ligado até a transferência terminar."
+                         TextWrapping="Wrap" Foreground="#D7C2EA" FontSize="11" LineHeight="17" />
+            </Grid>
+          </Border>
+        </StackPanel>
+      </ScrollViewer>
+    </Grid>
+
+    <Border Grid.Row="2" Grid.Column="1" Background="#0B080F" BorderBrush="#281834" BorderThickness="0,1,0,0">
+      <Grid Margin="30,0" ColumnDefinitions="*,Auto" VerticalAlignment="Center">
+        <StackPanel Spacing="7" MaxWidth="760" HorizontalAlignment="Stretch">
+          <Grid ColumnDefinitions="*,Auto">
+            <TextBlock Name="Status" Text="Pronto para selecionar um pacote" Foreground="#E1D9E9"
+                       FontSize="11" TextTrimming="CharacterEllipsis" />
+            <TextBlock Grid.Column="1" Name="TransferDetail" Text="" Foreground="#B67AF3"
+                       FontSize="11" FontWeight="SemiBold" Margin="12,0,0,0" />
+          </Grid>
+          <ProgressBar Name="TransferProgressBar" Minimum="0" Maximum="100" Value="0"
+                       Height="5" IsVisible="False" />
+        </StackPanel>
+        <StackPanel Grid.Column="1" Margin="28,0,0,0" HorizontalAlignment="Right">
+          <TextBlock Text="OlocoPhS4 Installer" Foreground="#8C7C99" FontSize="10" HorizontalAlignment="Right" />
+          <TextBlock Text="Base GPL-3.0 • uso local" Foreground="#5F526A" FontSize="9" HorizontalAlignment="Right" />
+        </StackPanel>
+      </Grid>
+    </Border>
+
+    <Menu IsVisible="False" Grid.RowSpan="3" Grid.ColumnSpan="2">
+      <MenuItem Name="btnProxyDownload" />
+      <MenuItem Name="btnRestartServer" />
+      <MenuItem Name="btnAllDebirdEnabled" />
+      <MenuItem Name="btnRealDebirdEnabled" />
+      <MenuItem Name="btnDebirdLinkEnabled" />
+      <MenuItem Name="btnSegmentedDownload" />
+      <MenuItem Name="btnTransferProgress" />
+      <MenuItem Name="btnCNLService" />
+      <MenuItem Name="btnDHCPService" />
+      <MenuItem Name="btnExit" />
+    </Menu>
+  </Grid>
+
+  <UserControl.Styles>
+    <Style Selector="Border.surface">
+      <Setter Property="Background" Value="#100D15" />
+      <Setter Property="BorderBrush" Value="#2E203A" />
+      <Setter Property="BorderThickness" Value="1" />
+      <Setter Property="CornerRadius" Value="20" />
+    </Style>
+    <Style Selector="Border.surface.hero">
+      <Setter Property="Background" Value="#15101D" />
+      <Setter Property="BorderBrush" Value="#4C2C66" />
+    </Style>
+    <Style Selector="Border.surface.connection">
+      <Setter Property="Background" Value="#120E19" />
+      <Setter Property="BorderBrush" Value="#482B5E" />
+    </Style>
+    <Style Selector="TextBlock.eyebrow">
+      <Setter Property="Foreground" Value="#A970F1" />
+      <Setter Property="FontSize" Value="9" />
+      <Setter Property="FontWeight" Value="Bold" />
+      <Setter Property="LetterSpacing" Value="1.5" />
+    </Style>
+    <Style Selector="TextBlock.mutedCaps">
+      <Setter Property="Foreground" Value="#776987" />
+      <Setter Property="FontSize" Value="9" />
+      <Setter Property="FontWeight" Value="Bold" />
+      <Setter Property="LetterSpacing" Value="1" />
+    </Style>
+    <Style Selector="TextBlock.fieldLabel">
+      <Setter Property="Foreground" Value="#8F819D" />
+      <Setter Property="FontSize" Value="9" />
+      <Setter Property="FontWeight" Value="Bold" />
+      <Setter Property="LetterSpacing" Value="0.8" />
+    </Style>
+    <Style Selector="TextBlock.checkNumber">
+      <Setter Property="Foreground" Value="#9D5BE8" />
+      <Setter Property="FontSize" Value="9" />
+      <Setter Property="FontWeight" Value="Bold" />
+    </Style>
+    <Style Selector="TextBlock.checkText">
+      <Setter Property="Foreground" Value="#BAAEC5" />
+      <Setter Property="FontSize" Value="11" />
+    </Style>
+    <Style Selector="Border.step">
+      <Setter Property="Width" Value="34" />
+      <Setter Property="Height" Value="34" />
+      <Setter Property="CornerRadius" Value="17" />
+      <Setter Property="Background" Value="#171020" />
+      <Setter Property="BorderBrush" Value="#4C3264" />
+      <Setter Property="BorderThickness" Value="1" />
+    </Style>
+    <Style Selector="Border.step.active">
+      <Setter Property="Background" Value="#7C3AED" />
+      <Setter Property="BorderBrush" Value="#BD94FF" />
+    </Style>
+    <Style Selector="TextBlock.stepNumber">
+      <Setter Property="HorizontalAlignment" Value="Center" />
+      <Setter Property="VerticalAlignment" Value="Center" />
+      <Setter Property="FontSize" Value="11" />
+      <Setter Property="FontWeight" Value="Bold" />
+      <Setter Property="Foreground" Value="#D8C9E9" />
+    </Style>
+    <Style Selector="TextBlock.stepLabel">
+      <Setter Property="Foreground" Value="#756481" />
+      <Setter Property="FontSize" Value="8" />
+      <Setter Property="FontWeight" Value="Bold" />
+      <Setter Property="LetterSpacing" Value="0.8" />
+    </Style>
+    <Style Selector="TextBlock.stepLabel.active">
+      <Setter Property="Foreground" Value="#CDB7E7" />
+    </Style>
+    <Style Selector="TextBox">
+      <Setter Property="Background" Value="#09070D" />
+      <Setter Property="BorderBrush" Value="#392647" />
+      <Setter Property="BorderThickness" Value="1" />
+      <Setter Property="CornerRadius" Value="11" />
+      <Setter Property="Padding" Value="12,8" />
+      <Setter Property="Foreground" Value="#F7F3FF" />
+      <Setter Property="FontSize" Value="11" />
+    </Style>
+    <Style Selector="TextBox:focus">
+      <Setter Property="BorderBrush" Value="#9A5DE1" />
+    </Style>
+    <Style Selector="Button">
+      <Setter Property="CornerRadius" Value="11" />
+      <Setter Property="Padding" Value="16,10" />
+      <Setter Property="FontWeight" Value="SemiBold" />
+      <Setter Property="FontSize" Value="11" />
+    </Style>
+    <Style Selector="Button.action">
+      <Setter Property="Background" Value="#7C3AED" />
+      <Setter Property="Foreground" Value="White" />
+      <Setter Property="BorderBrush" Value="#B685F4" />
+      <Setter Property="Padding" Value="20,11" />
+    </Style>
+    <Style Selector="Button.action:pointerover">
+      <Setter Property="Background" Value="#9354E7" />
+    </Style>
+    <Style Selector="Button.secondary">
+      <Setter Property="Background" Value="#1B1324" />
+      <Setter Property="Foreground" Value="#E7D7F8" />
+      <Setter Property="BorderBrush" Value="#55326D" />
+    </Style>
+    <Style Selector="Button.secondary:pointerover">
+      <Setter Property="Background" Value="#291938" />
+    </Style>
+    <Style Selector="DataGrid">
+      <Setter Property="AutoGenerateColumns" Value="False" />
+      <Setter Property="CanUserResizeColumns" Value="True" />
+      <Setter Property="IsReadOnly" Value="True" />
+      <Setter Property="GridLinesVisibility" Value="Horizontal" />
+      <Setter Property="BorderThickness" Value="0" />
+      <Setter Property="Background" Value="#0B090E" />
+      <Setter Property="Foreground" Value="#EDE6F4" />
+      <Setter Property="HorizontalScrollBarVisibility" Value="Auto" />
+      <Setter Property="VerticalScrollBarVisibility" Value="Auto" />
+    </Style>
+    <Style Selector="ProgressBar">
+      <Setter Property="Background" Value="#291B34" />
+      <Setter Property="Foreground" Value="#A855F7" />
+    </Style>
+  </UserControl.Styles>
+</UserControl>

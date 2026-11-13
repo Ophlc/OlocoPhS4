@@ -1,0 +1,22 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:DirectPackageInstaller.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:views="clr-namespace:DirectPackageInstaller.Views"
+        mc:Ignorable="d" d:DesignWidth="560" d:DesignHeight="250"
+        x:Class="DirectPackageInstaller.Views.MessageBox"
+        MinWidth="520"
+        MinHeight="230"
+        MaxWidth="820"
+        WindowStartupLocation="CenterOwner"
+        Icon="/Assets/olocophs4-installer.png"
+        Background="#09070D"
+        CanResize="False"
+        SizeToContent="WidthAndHeight"
+        Title="{Binding Title}">
+        <Window.DataContext>
+                <vm:DialogModel/>
+        </Window.DataContext>
+        <views:MessageBoxView Name="View"/>
+</Window>

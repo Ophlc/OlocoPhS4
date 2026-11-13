@@ -1,0 +1,78 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:DirectPackageInstaller.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="560" d:DesignHeight="250"
+             x:Class="DirectPackageInstaller.Views.MessageBoxView"
+             Background="#09070D">
+  <UserControl.DataContext>
+    <viewModels:DialogModel/>
+  </UserControl.DataContext>
+
+  <Grid RowDefinitions="78,*,64" MinWidth="520">
+    <Border BorderBrush="#3D2450" BorderThickness="0,0,0,1">
+      <Border.Background>
+        <LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,0%">
+          <GradientStop Color="#211033" Offset="0" />
+          <GradientStop Color="#120B1B" Offset="0.58" />
+          <GradientStop Color="#0B080F" Offset="1" />
+        </LinearGradientBrush>
+      </Border.Background>
+      <Grid Margin="20,0" ColumnDefinitions="Auto,*">
+        <Border Width="52" Height="52" CornerRadius="16" Background="#140C1E"
+                BorderBrush="#8150B3" BorderThickness="1" Padding="5"
+                VerticalAlignment="Center">
+          <Image Name="Icon" Source="/Assets/olocophs4-installer.png" Stretch="Uniform" />
+        </Border>
+        <StackPanel Grid.Column="1" VerticalAlignment="Center" Margin="14,0,0,0" Spacing="3">
+          <TextBlock Text="{Binding Title}" Foreground="#F8F4FF" FontSize="17" FontWeight="SemiBold" />
+          <TextBlock Text="MENSAGEM DO SISTEMA" Foreground="#A96DE8" FontSize="9"
+                     FontWeight="Bold" LetterSpacing="1.4" />
+        </StackPanel>
+      </Grid>
+    </Border>
+
+    <Border Grid.Row="1" Margin="20,18" Background="#100C16" BorderBrush="#352043"
+            BorderThickness="1" CornerRadius="14" Padding="0">
+      <Grid ColumnDefinitions="4,*">
+        <Border Background="#8B5CF6" CornerRadius="14,0,0,14" />
+        <ScrollViewer Grid.Column="1" MaxHeight="360" VerticalScrollBarVisibility="Auto">
+          <TextBlock Name="Message" Text="{Binding Message}" Margin="18,16"
+                     VerticalAlignment="Center" TextWrapping="Wrap" MaxWidth="730"
+                     FontSize="14" LineHeight="22" Foreground="#EDE6F3" />
+        </ScrollViewer>
+      </Grid>
+    </Border>
+
+    <Border Grid.Row="2" Background="#0D0912" BorderBrush="#2A1936" BorderThickness="0,1,0,0">
+      <Grid Margin="20,0" ColumnDefinitions="*,Auto,Auto,Auto,Auto">
+        <TextBlock Text="OlocoPhS4 • LOCAL LINK" Foreground="#695875" FontSize="9"
+                   FontWeight="Bold" LetterSpacing="0.8" VerticalAlignment="Center" />
+        <Button Grid.Column="4" Name="ButtonA" />
+        <Button Grid.Column="3" Name="ButtonB" />
+        <Button Grid.Column="2" Name="ButtonC" />
+        <Button Grid.Column="1" Name="ButtonD" />
+      </Grid>
+    </Border>
+  </Grid>
+
+  <UserControl.Styles>
+    <Style Selector="Button">
+      <Setter Property="MinWidth" Value="92" />
+      <Setter Property="MinHeight" Value="36" />
+      <Setter Property="Margin" Value="8,0,0,0" />
+      <Setter Property="Padding" Value="16,8" />
+      <Setter Property="HorizontalAlignment" Value="Right" />
+      <Setter Property="VerticalAlignment" Value="Center" />
+      <Setter Property="CornerRadius" Value="10" />
+      <Setter Property="Background" Value="#6D28D9" />
+      <Setter Property="BorderBrush" Value="#A878E8" />
+      <Setter Property="Foreground" Value="White" />
+      <Setter Property="FontWeight" Value="SemiBold" />
+    </Style>
+    <Style Selector="Button:pointerover">
+      <Setter Property="Background" Value="#8645E2" />
+    </Style>
+  </UserControl.Styles>
+</UserControl>
