@@ -18,10 +18,11 @@ O projeto utiliza como base o [DirectPackageInstaller](https://github.com/marcus
 
 1. Acesse a página de [Releases](https://github.com/Ophlc/OlocoPhS4/releases/latest).
 2. Abra a versão mais recente.
-3. Na seção **Assets**, baixe o arquivo `OlocoPhS4-Installer-0.2.0-win-x64.zip`.
+3. Na seção **Assets**, baixe o arquivo `OlocoPhS4-Installer-0.2.zip`.
 4. Quando o download terminar, extraia todo o conteúdo do ZIP para uma pasta.
-5. Dentro da pasta extraída, dê dois cliques no atalho **OlocoPhS4 Installer**.
-6. Não apague nem mova a pasta **Arquivos do programa**, pois ela contém os componentes necessários para executar o aplicativo.
+5. Dentro da pasta extraída, entre na pasta **Arquivo do programa**.
+6. Execute como administrador o arquivo **OlocoPhS4 Installer**. 
+7. Não apague nem mova a pasta **Arquivos do programa**, pois ela contém os componentes necessários para executar o aplicativo.
 
 O executável disponibilizado nesta versão é destinado ao **Windows 64 bits**.
 
@@ -62,7 +63,7 @@ Este projeto não é afiliado, mantido ou endossado pela equipe do GoldHEN. O Go
 1. Conecte o computador e o PS4 à mesma rede.
 2. Carregue o GoldHEN no PS4.
 3. Ative o **BinLoader** ou **Payload Server** nas configurações do GoldHEN.
-4. Abra o atalho **OlocoPhS4 Installer** no computador.
+4. Execute como administrador o arquivo **OlocoPhS4 Installer** no computador.
 5. Informe o IP do PS4 e confira o IP detectado para o computador.
 6. Use **Testar acesso ao PS4** para verificar a comunicação básica.
 7. Selecione o arquivo `.pkg` armazenado no computador.
